@@ -205,3 +205,109 @@ footer {
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Gold Shield – CA Contractor</title>
+<style>
+/* ———  GLOBAL  ——— */
+html,body{
+  height:100%;
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fafafa;               /* clean, subtle backdrop */
+  font-family:"Segoe UI",Tahoma,sans-serif;
+}
+
+/* ———  SHIELD  ——— */
+.shield{
+  --border:10px;
+  --gold-light:#ffec8b;
+  --gold-mid:#ffd700;
+  --gold-dark:#b8860b;
+
+  position:relative;
+  width:220px;
+  height:260px;
+  padding:var(--border);            /* keeps inner gradient away from outer edge */
+  
+  /* OUTER BORDER (solid metallic edge) */
+  background:var(--gold-light);
+  border-radius:8px;                /* softens corners of the border */
+  
+  /* Glowy rim */
+  box-shadow:
+      0 0 15px rgba(255,215,0,.7),
+      0 0 4px  rgba(255,215,0,.9) inset;
+}
+
+/* Inner shield face */
+.shield::after{
+  content:"";
+  position:absolute;
+  inset:var(--border);              /* sits inside the border */
+  
+  /* Two-tone gold split for depth */
+  background:
+    linear-gradient(
+      to right,
+      var(--gold-light) 0 50%,
+      var(--gold-dark) 50% 100%
+    );
+  
+  /* Classic shield silhouette */
+  clip-path:polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0 75%,
+    0 25%
+  );
+  
+  /* Inner bevel for shine */
+  box-shadow:inset 0 0 15px rgba(255,255,255,.35);
+}
+
+/* Highlight sweep down the left side (extra shine) */
+.shield::before{
+  content:"";
+  position:absolute;
+  inset:var(--border);
+  background:linear-gradient(135deg,rgba(255,255,255,.6) 0%,rgba(255,255,255,0) 50%);
+  clip-path:inherit;               /* match the polygon shape */
+  pointer-events:none;
+}
+
+/* ———  LICENSE TEXT  ——— */
+.license{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  padding:0 .4rem;
+  text-align:center;
+  width:80%;
+  
+  color:#3b2e00;                   /* dark gold/brown for contrast */
+  font-weight:700;
+  font-size:1rem;
+  line-height:1.3;
+  
+  text-shadow:
+     0 1px 2px #fff,
+     0 0 1px rgba(0,0,0,.15);
+}
+</style>
+</head>
+<body>
+
+<div class="shield">
+  <span class="license">CA Contractor's<br/>License # 960123</span>
+</div>
+
+</body>
+</html>
